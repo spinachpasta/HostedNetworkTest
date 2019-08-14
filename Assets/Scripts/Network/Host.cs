@@ -44,7 +44,28 @@ public class Host : MonoBehaviour
             //BattleData data = (BattleData)binaryFormatter.Deserialize(context.Request.InputStream);
             string resposeFromClient = reader.ReadToEnd();
             //            Debug.Log(resposeFromClient);
-
+            try
+            {
+                PayloadFromClient fromClient = JsonUtility.FromJson<PayloadFromClient>(resposeFromClient);
+                List<Command> commands = new List<Command>();
+                Debug.Log(resposeFromClient);
+                for(int i = 0; i < fromClient.commands.Count; i++)
+                {
+                    if (!fromClient.commands[i].sent)
+                    {
+                        commands.Add(fromClient.commands[i]);
+                    }
+                    else
+                    {
+                        //Debug.Log("wrong command");
+                    }
+                }
+                simulator.commands.AddRange(commands);
+            }
+            catch
+            {
+                Debug.Log("data error");
+            }
             //byte[] _responseArray = Encoding.UTF8.GetBytes(JsonUtility.ToJson(data));
             PayloadFromHost payload = new PayloadFromHost();
             payload.units = simulator.units;

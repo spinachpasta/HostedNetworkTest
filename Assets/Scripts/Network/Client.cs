@@ -34,6 +34,7 @@ public class Client : MonoBehaviour
 
             PayloadFromClient fromClient = new PayloadFromClient();
             fromClient.commands = simulator.commands;
+            
 
             byte[] binary = Encoding.UTF8.GetBytes(JsonUtility.ToJson(fromClient));
             //manager.SetCommandSent(); server does this

@@ -55,6 +55,7 @@ public class DragAndFire : MonoBehaviour
                 c.vz = vel.z;
                 c.uuid = targetUnit.uuid;
                 c.owner = simulator.isClient;
+
                 simulator.commands.Add(c);
                 //targetScript.rg.AddForce(vel, ForceMode.VelocityChange);
                 /*

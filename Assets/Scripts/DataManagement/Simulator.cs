@@ -68,7 +68,7 @@ public class Simulator : MonoBehaviour
             pz += targets[i].vz;
         }
 
-        Debug.Log(targets[0].vx);
+//        Debug.Log(targets[0].vx);
         //Debug.Log(string.Format("E={0},p=({1},{2})", E, px, pz));
         for (int i = 0; i < targets.Count; i++)
         {
@@ -198,7 +198,7 @@ public class Simulator : MonoBehaviour
         for (int i = 0; i < commands.Count; i++)
         {
             Command c = commands[i];
-            if (c.owner != isClient || c.processed)
+            if (c.processed)
             {
                 continue;
             }
